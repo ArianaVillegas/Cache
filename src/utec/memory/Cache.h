@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef LRU_CACHE_CACHE_H
 #define LRU_CACHE_CACHE_H
 
@@ -7,35 +9,44 @@
 
 using namespace std;
 
-template<class K, class V>
-class Cache {
-private:
+namespace utec {
 
-    int maxSize;
+    namespace memory {
 
-    unordered_map<K, typename list<pair<K,V>>::iterator> positions;
-    list<pair<K,V>> values;
+        template<class K, class V>
+        class Cache {
+        private:
 
-    K (*cachePolicy)(Cache<K,V>*);
-    void (*update)(Cache<K,V>*, K, V);
+            int maxSize;
 
-public:
+            unordered_map<K, typename list<pair<K, V>>::iterator> positions;
+            list<pair<K, V>> values;
 
-    Cache(int maxSize, K (*cachePolicy)(Cache<K,V>*),
-          void (*update)(Cache<K,V>*, K, V));
+            K (*cachePolicy)(Cache<K, V> *);
 
-    void insertKeyValuePair(K key, V value);
+            void (*update)(Cache<K, V> *, K, V);
 
-    optional<V> getValueFromKey(K key);
+        public:
 
-    optional<K> getMostRecentKey();
+            Cache(int maxSize, K (*cachePolicy)(Cache<K, V> *),
+                  void (*update)(Cache<K, V> *, K, V));
 
-    int getMaxSize(){ return maxSize; }
+            void insertKeyValuePair(K key, V value);
 
-    auto getPositions(){ return &positions; }
+            optional<V> getValueFromKey(K key);
 
-    auto getValues(){ return &values; }
+            optional<K> getMostRecentKey();
 
-};
+            int getMaxSize() { return maxSize; }
+
+            auto getPositions() { return &positions; }
+
+            auto getValues() { return &values; }
+
+        };
+
+    }
+
+}
 
 #endif

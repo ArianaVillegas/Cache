@@ -1,6 +1,7 @@
+#pragma once
+
 #ifndef LRU_CACHE_RANDOMGENERATOR_H
 #define LRU_CACHE_RANDOMGENERATOR_H
-
 
 #include <random>
 #include <type_traits>
@@ -11,16 +12,28 @@
 
 using namespace std;
 
-class RandomGenarator {
-private:
-    mt19937 rng;
+namespace utec {
 
-public:
-    RandomGenarator();
+    namespace tests {
 
-    int generateRandom(int min = MIN, int max = MAX);
-    void generateRandomInstructions(unsigned int size);
-};
+        namespace tools {
 
+            class RandomGenarator {
+            private:
+                mt19937 rng;
+
+            public:
+                RandomGenarator();
+
+                int generateRandom(int min = MIN, int max = MAX);
+
+                void generateRandomInstructions(unsigned int size);
+            };
+
+        }
+
+    }
+
+}
 
 #endif

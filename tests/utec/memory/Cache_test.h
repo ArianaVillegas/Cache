@@ -1,3 +1,4 @@
+#pragma once
 
 #ifndef CACHE_TEST_H
 #define CACHE_TEST_H
@@ -10,7 +11,7 @@
 
 #include "../../../src/utec/memory/CachePolicy.cpp"
 
-using namespace std;
+using namespace utec::memory;
 
 #ifndef NDEBUG
 #   define ASSERT(condition, message) \

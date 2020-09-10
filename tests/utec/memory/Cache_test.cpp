@@ -5,6 +5,8 @@
 #include "../general/Print.cpp"
 #include "Cache_test.h"
 
+using namespace utec::tests::tools;
+
 template <class K, class V>
 double Tester<K,V>::execute(bool p, int maxSize, K (*cachePolicy)(Cache<K,V>*), void (*update)(Cache<K,V>*, K, V)) {
     Cache<char,int> L(maxSize, cachePolicy, update);

@@ -2,10 +2,13 @@
 #include "tests/utec/memory/Cache_test.h"
 #include "tests/utec/memory/Cache_test.cpp"
 
+using namespace utec::memory::policy;
+using namespace utec::tests::tools;
+
 int main() {
 
     RandomGenarator r;
-    r.generateRandomInstructions(10000);
+    r.generateRandomInstructions(100000);
 
     Tester<char, int> t;
     double time;
