@@ -1,6 +1,6 @@
-# Análisis de complejidad
+# Complexity Analysis
 
-| Estructura | Operación | Complejidad |
+| Data Structure | Operation | Complexity |
 | :--: | :--: | :--: |
 | unordered_map | [] | O(1) |
 | unordered_map | find | O(1) |
@@ -16,25 +16,25 @@
 | list | push_back | O(1) |
 | list | pop_back | O(1) |
 
-## Espacio
+## Space
 
-El espacio es constante porque la estructura tiene un tamaño máximo que se define al momento de crearla.
+Space complexity is constant because the data structure has a maximum size that is defined when it is created.
 
-## Complejidad
+## Time Complexity
 
-* InsertKeyValuePair: Para esta función, hay dos casos,
-   - El key ya esta en la estructura: Primero se usa un hash para acceder al iterador que tiene el par de key/value en la lista ([]). Luego se usa el iterador para cambiar el valor en la lista, las operaciones anteriores son constantes por lo cual este caso es O(1).
-   - El key no esta en la estructuras:
-      - Si la estructura esta llena eliminamos el ultimo elemento de la lista, y con la key de la lista tambien lo elminamos en el hash. O(1)
-      - Se añade el nuevo key/value al inicio de la lista (push_front), luego guardamos este valor en el hash ([]), para acceder a el usamos (front), e insertar el par al hash ([]). O(1)
-* GetValueFromKey: Dos casos
-   - Si el key no esta en el hash, retornamos nullopt. O(1)
-   - Si el key esta, lo eliminamos de la posicion en que esta (erase), y lo insertamos al inicio de la lista (push_front), y actualizamos el valor en el hash ([]). Finalmente retornamos el valor del key/value pair. O(1)
-* GetMostRecentKey: Accedemos al primer par de la lista y tomamos el value (front). O(1)
+* InsertKeyValuePair: For this function, there are two cases,
+   - The key is already in the structure: First, a hash is used to access the iterator that has the key/value pair in the list ([]). Then, the iterator is used to change the value in the list, the previous operations are constant, therefore this case is O(1).
+   - The key is not in the structure:
+      - If the structure is full, we remove the last element of the list, and with the key from the list we also remove it in the hash. O(1)
+      - The new key/value pair is added to the beginning of the list (push_front), then we save this value in the hash ([]), to access it we use (front), and insert the pair into the hash ([]). O(1)
+* GetValueFromKey: Two cases
+   - If the key is not in the hash, we return nullopt. O(1)
+   - If the key is, we remove it from the position it is in (erase), and insert it at the beginning of the list (push_front), and update the value in the hash ([]). Finally, we return the value of the key/value pair. O(1)
+* GetMostRecentKey: We access the first pair in the list and take the value (front). O(1)
 
-# Tabla de comparación de tiempos
+# Time comparison table
 
-| Tamaño | LRU | FIFO | LIFO |
+| Size | LRU | FIFO | LIFO |
 | :--: | :--: | :--: | :--: |
 | 10000 | 0.016224 | 0.015059 | 0.014854 |
 | 100000 | 0.113235 | 0.105974 | 0.094090 |
